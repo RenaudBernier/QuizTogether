@@ -11,7 +11,7 @@ export default function FileDropzone({ onFileUpload }) {
     });
 
     try {
-      const response = await fetch('/api/upload', {
+      const response = await fetch('/api/openai', {
         method: 'POST',
         body: formData,
       });
