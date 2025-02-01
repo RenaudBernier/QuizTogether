@@ -11,11 +11,10 @@ import { useEffect, useState } from "react"
 
 // 2. 
 
-export default function Players({ sessionId, data }) {
+export default function PlayerInterface({ sessionId, data }) {
     console.log(JSON.stringify(data, null, 2));
     
     const [sessionData, setSessionData] = useState(data);
-    const [players, setPlayers] = useState(sessionData.players || []);
 
     useEffect(() => {
         const docRef = doc(db, "sessions", sessionId);

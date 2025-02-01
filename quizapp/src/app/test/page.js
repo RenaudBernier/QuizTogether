@@ -1,4 +1,4 @@
-import Players from "../components/multiplayer/Players"
+import Players from "../components/multiplayer/PlayerInterface"
 
 // Need session id
 

@@ -1,6 +1,6 @@
 import { doc, getDoc, onSnapshot, setDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "@/app/firebase";
-import Players from "@/app/components/multiplayer/Players";
+import PlayerInterface from "@/app/components/multiplayer/PlayerInterface";
 
 async function getSessionPlayers(sessionId) {
     let data = {};
@@ -52,7 +52,7 @@ export default async function Page({
         <div className="w-full">
             <div className="block font-bold capitalize">PLAYER: {ids[1]}</div>
             <h1 className="block w-full test">Host: {sessionData.host}</h1>
-            <Players sessionId={ids[0]} data={sessionData} />
+            <PlayerInterface sessionId={ids[0]} data={sessionData} />
         </div>
     )
 }
