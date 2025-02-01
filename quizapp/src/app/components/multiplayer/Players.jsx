@@ -1,5 +1,7 @@
 'use client'
-import { useState } from "react"
+import { db } from "@/app/firebase";
+import { doc, onSnapshot } from "firebase/firestore";
+import { useEffect, useState } from "react"
 
 // we need a function that pulls from the database
 
@@ -9,36 +11,32 @@ import { useState } from "react"
 
 // 2. 
 
-export default function Players({ data }) {
+export default function Players({ sessionId, data }) {
     console.log(JSON.stringify(data, null, 2));
     
-    const [players, setPlayers] = useState(data.players || []);
-    // const [players, setPlayers] = useState([
-    //     {
-    //         name: "John",
-    //         points: 0,
-    //     },
-    //     {
-    //         name: "Jude",
-    //         points: 10,
-    //     },
-    //     {
-    //         name: "Anne",
-    //         points: 2,
-    //     },
-    //     {
-    //         name: "Mary",
-    //         points: 1,
-    //     },
-    // ]);
+    const [sessionData, setSessionData] = useState(data);
+    const [players, setPlayers] = useState(sessionData.players || []);
+
+    useEffect(() => {
+        const docRef = doc(db, "sessions", sessionId);
+        
+        // Subscribe to real-time updates
+        const unsub = onSnapshot(docRef, (docSnap) => {
+            if (docSnap.exists()) {
+                setSessionData(docSnap.data());
+            }
+        });
+
+        return () => unsub(); // Cleanup on unmount
+    }, [sessionId]);
 
     return (
         <div className="block">
             <h2>JOIN CODE: {data.joinCode}</h2>
-            {players.map((player, index) => (
+            {sessionData.players.map((player, index) => (
                 <div key={index}>
                     <h4>{player.name}</h4>
-                    <span>{player.points}</span>
+                    {/* <span>{player.points}</span> */}
                 </div>
             ))}
         </div>
