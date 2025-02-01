@@ -50,7 +50,7 @@ export default async function Page({
 
     return (
         <div className="w-full">
-            <div className="block font-bold capitalize">PLAYER: {ids[1]}</div>
+            <div className="block font-bold text-center uppercase bg-blue-600 text-white">{ids[1]}</div>
             <h1 className="block w-full test">Host: {sessionData.host}</h1>
             <PlayerInterface sessionId={ids[0]} data={sessionData} />
         </div>
