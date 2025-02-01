@@ -1,5 +1,7 @@
 import Players from "../components/multiplayer/Players"
 
+// Need session id
+
 export default function Page() {
 
     return (
