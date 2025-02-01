@@ -10,15 +10,15 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg z-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto p-6 lg:p-10">
+        <div className="flex justify-center h-16">
           {/* Logo */}
           <Link href="/" className="text-2xl font-extrabold text-white tracking-wide">
             QuizMaster 🚀
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="flex">
             <NavItem href="/" label="Home" />
             <NavItem href="/about" label="About" />
             <NavItem href="/quizzes" label="Quizzes" />
@@ -66,8 +66,6 @@ export default function Navbar() {
           <NavItem href="/" label="Home" />
           <NavItem href="/about" label="About" />
           <NavItem href="/quizzes" label="Quizzes" />
-          <NavItem href="/leaderboard" label="Leaderboard" />
-          <NavItem href="/settings" label="Settings" />
         </motion.div>
       )}
     </nav>
