@@ -1,0 +1,7 @@
+Questions: array of this:
+{
+  prompt: String
+  answers: Array of 4 strings, random order
+  goodAnswer: int (0-indexed)
+  explanation: String
+}
