@@ -2,18 +2,45 @@
 
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import * as pdfjsLib from 'pdfjs-dist';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs';
+import {useState} from "react";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.mjs';
 
 export default function FileDropzone({ onFileUpload }) {
+
   const onDrop = useCallback(async (acceptedFiles) => {
-    const formData = new FormData();
-    acceptedFiles.forEach((file) => {
-      formData.append('file', file);
-    });
+    console.log("in fc");
+
+    if (!acceptedFiles[0]) {
+        console.error('No file uploaded');
+      return;
+    }
+
+    // Convert file to an ArrayBuffer
+    const fileData = await acceptedFiles[0].arrayBuffer();
+
+    // Load the PDF
+    const pdfDoc = await pdfjsLib.getDocument({ data: fileData }).promise;
+    let fullText = '';
+
+    for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+      const page = await pdfDoc.getPage(pageNum);
+      const content = await page.getTextContent();
+
+      const pageText = content.items.map((item) => item.str).join(' ');
+      fullText += pageText + '\n\n';
+    }
+    console.log(fullText);
 
     try {
       const response = await fetch('/api/openai', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: fullText }),
       });
       const result = await response.json();
       console.log('File uploaded:', result);
