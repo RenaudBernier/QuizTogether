@@ -3,26 +3,27 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   // const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg z-50">
+    <nav className="h-24 my-auto fixed top-0 left-0 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <Link href="/" className="text-2xl font-extrabold text-white tracking-wide">
-            QuizMaster 🚀
+            {/* QuizMaster 🚀 */}
+            <Image src={"/QuizIt.png"} width={200} height={75} alt="QuizIt Logo"/>
+
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
             <NavItem href="/" label="Home" />
             <NavItem href="/about" label="About" />
-            <NavItem href="/quizzes" label="Quizzes" />
-            <NavItem href="/leaderboard" label="Leaderboard" />
             
             {/* Dropdown Menu */}
             {/* <div className="relative">
@@ -66,8 +67,6 @@ export default function Navbar() {
         >
           <NavItem href="/" label="Home" />
           <NavItem href="/about" label="About" />
-          <NavItem href="/quizzes" label="Quizzes" />
-          <NavItem href="/leaderboard" label="Leaderboard" />
         </motion.div>
       )}
     </nav>
