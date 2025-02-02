@@ -6,8 +6,9 @@ import { useState } from "react";
 import Explanation from "./Explanation";
 
 export default function Page() {
-    const [questioNb, setQuestionNb] = useState(0);
+    const [questionNb, setQuestionNb] = useState(0);
     const [resultScreen, setResultScreen] = useState(false);
+    console.log(questionNb);
 
     if (resultScreen == false)
         return (
@@ -20,7 +21,8 @@ export default function Page() {
         )
     else
         return (
-        <Explanation questionNb={questioNb} setQuestionNb={setQuestionNb} setResultScreen={setResultScreen}/>
+        <Explanation 
+        questionNb={questionNb} setQuestionNb={setQuestionNb} setResultScreen={setResultScreen}/>
     )
 
 }
