@@ -54,16 +54,16 @@ export default function FileDropzone({ onFileUpload, setStatus}) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-        <div
-            {...getRootProps()}
-            className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center cursor-pointer hover:border-blue-500 transition"
-        >
-          <input {...getInputProps()} />
-          {isDragActive ? (
-              <p className="text-blue-500">Drop the files here...</p>
-          ) : (
-              <p>Drag & drop some files here, or click to select files</p>
-          )}
-        </div>
+      <div
+          {...getRootProps()}
+          className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center cursor-pointer hover:border-blue-500 transition"
+      >
+        <input {...getInputProps()} />
+        {isDragActive ? (
+            <p className="text-blue-500">Drop the files here...</p>
+        ) : (
+            <p>Drag & drop some files here, or click to select files</p>
+        )}
+      </div>
   );
 }
