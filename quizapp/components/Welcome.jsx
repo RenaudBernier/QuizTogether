@@ -11,14 +11,14 @@ const Welcome = () => {
         <p className="text-lg text-neutral-500 dark:text-neutral-400 mb-6 py-3">
             The ultimate quiz app for developers
         </p>
-        <div className="flex justify-center space-x-4">
+        {/* <div className="flex justify-center space-x-4">
             <Link href="/login" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
                 Login
             </Link>
             <Link href="/signup" className="bg-yellow-400 text-black px-6 py-3 rounded-lg hover:bg-yellow-500">
                 Sign Up
             </Link>
-        </div>
+        </div> */}
     </section>
   )
 }
