@@ -27,16 +27,16 @@ export default function PlayerInterface({ sessionId, data }) {
 
         return () => unsub(); // Cleanup on unmount
     }, [sessionId]);
-
+    let i = 0;
     return (
         <div className="block">
             <h2>JOIN CODE: {sessionData.joinCode || "Loading..."}</h2>
 
-            {sessionData?.players?.length > 0 ? (
-                sessionData.players.map((player, index) => (
-                    <div key={index} className="flex justify-between">
-                        <h4>{player.name}</h4>
-                        <span>{player.points || 0}</span>
+            {sessionData?.players !== undefined ? (
+                Object.keys(sessionData.players).map((name) => (
+                    <div key={i++} className="flex justify-between">
+                        <h4>{name}</h4>
+                        <span>{sessionData.players[name].score || 0}</span>
                         <button 
                             className="bg-blue-200 rounded-lg px-2 py-2" 
                             onClick={() => handlePlayerTest(sessionId, player.id)}

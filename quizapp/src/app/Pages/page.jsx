@@ -5,6 +5,9 @@ import Options from "../components/Options";
 import { useState } from "react";
 import Explanation from "./Explanation";
 import {getSession} from "@/app/quiz/player/[...ids]/page";
+import updateAfterQuestion from "@/app/quiz/host/[sessionId]/updateAfterQuestion";
+import {doc, updateDoc} from "firebase/firestore";
+import {db} from "@/app/firebase";
 
 const id = sessionStorage.getItem("id");
 const data = await getSession(id);
@@ -14,8 +17,13 @@ export default function Page() {
     const [resultScreen, setResultScreen] = useState(false);
     console.log(questionNb);
 
+
     const currentQuestion = data.questionBank[questionNb];
     const answers = data.questionBank[questionNb].answers;
+
+    if(questionNb === -1) {
+
+    }
 
     if (resultScreen == false)
         return (
@@ -25,10 +33,11 @@ export default function Page() {
                 <Options answers={[{answer: answers[0]}, {answer: answers[1]}, {answer: answers[2]}, {answer: answers[3]}]} />
             </div>
         )
-    else
+    else {
         return (
-        <Explanation 
-        questionNb={questionNb} setQuestionNb={setQuestionNb} setResultScreen={setResultScreen}/>
-    )
+            <Explanation
+                questionNb={questionNb} setQuestionNb={setQuestionNb} setResultScreen={setResultScreen}/>
+        )
+    }
 
 }
