@@ -47,8 +47,6 @@ export default function Page() {
     }
 
     const currentQuestion = data.questionBank[questionNb];
-    alert(currentQuestion);
-    
     const answers = currentQuestion.answers;
 
     return !resultScreen ? (
