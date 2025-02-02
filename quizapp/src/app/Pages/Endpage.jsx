@@ -1,10 +1,10 @@
 "use client"; // Add this if using Next.js App Router (needed for hooks)
 
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 export default function Endpage(){
     const handleNavigation = () => {
-        Router.push("/Welcome");
+        redirect("/Welcome");
     }
 
     return (

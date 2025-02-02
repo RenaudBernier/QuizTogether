@@ -2,7 +2,6 @@ import Leaderboard from "../components/multiplayer/Leaderboard";
 import {getSession} from "@/app/quiz/player/[...ids]/page";
 import {useEffect, useState} from "react";
 import updateAfterQuestion from "@/app/quiz/host/[sessionId]/updateAfterQuestion";
-
 const id = sessionStorage.getItem("id");
 
 
@@ -28,6 +27,11 @@ export default function Explanation({questionNb, setQuestionNb, setResultScreen}
   const handleClick = () => {
     setQuestionNb(questionNb+1);
     setResultScreen(1);
+  }
+
+
+  const endClick = () => {
+    window.location.href = "https://quizit.study";
   }
 
   if(!data || !data.players) return <div>Loading...</div>;
@@ -58,6 +62,7 @@ export default function Explanation({questionNb, setQuestionNb, setResultScreen}
               <Leaderboard players={players}/>
               <button className="m-5 p-3 border-2 border-blue-500 bg-blue-500 rounded" onClick={handleClick}>Next
               </button>
+              <button className="m-5 p-3 border-2 border-blue-500 bg-blue-500 rounded" onClick={endClick}>End</button>
             </div>
           </div>
         </div>

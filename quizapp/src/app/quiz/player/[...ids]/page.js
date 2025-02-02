@@ -49,7 +49,6 @@ export default async function Page({
     return (
         <div className="w-full">
             <div className="block font-bold text-center uppercase bg-blue-600 text-white">{ids[1]}</div>
-            <h1 className="block w-full test">Host: {sessionData.questionBank[0].prompt}</h1>
             <AnswerPage name={name} sessionId={sessionID} sessionData={sessionData}/>
             {/*<PlayerInterface sessionId={ids[0]} data={sessionData} />*/}
         </div>
