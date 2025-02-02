@@ -1,4 +1,4 @@
-import { Leaderboard } from "../components/Leaderboard";
+import Leaderboard from "../components/multiplayer/Leaderboard";
 
 export default function Explanation({questionNb, setQuestionNb, setResultScreen}) {
 

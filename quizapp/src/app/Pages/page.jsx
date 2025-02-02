@@ -15,7 +15,6 @@ export default function Page() {
             <div className="">
                 <CardComponent/>
                 <TimerComponent setResultScreen={setResultScreen}/>
-
                 <Options answers={[{answer: "Yes"}, {answer: "No"}, {answer: "Maybe"}, {answer: "Sure"}]} />
             </div>
         )
