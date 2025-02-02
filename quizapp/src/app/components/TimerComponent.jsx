@@ -20,7 +20,7 @@ function MyTimer({ expiryTimestamp, setResultScreen }) {
 
 export default function TimerComponent({ setResultScreen }) {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 3); // 10 minutes timer
+  time.setSeconds(time.getSeconds() + 10); // 10 minutes timer
   return (
     <div>
       <MyTimer expiryTimestamp={time} setResultScreen={setResultScreen} />

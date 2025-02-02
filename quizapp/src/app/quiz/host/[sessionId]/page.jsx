@@ -42,7 +42,7 @@ export default async function Page({
         await updateDoc(doc(db, "sessions", id), {
             currentQIndex: 0,
         });
-        redirect('/Pages');
+        redirect(`/Pages/${id}`);
     }
 
     const sessionData = await getSessionPlayers(sessionId);

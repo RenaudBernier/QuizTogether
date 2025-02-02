@@ -9,7 +9,7 @@ export default function ButtonComponent({ id }){
         await updateDoc(doc(db, "sessions", id), {
             currentQIndex: 0,
         });
-        redirect('/Pages');
+        redirect(`/Pages/${id}`);
     }
     return(
         <Button onClick={incrementQuestionNb}>Ready</Button>
