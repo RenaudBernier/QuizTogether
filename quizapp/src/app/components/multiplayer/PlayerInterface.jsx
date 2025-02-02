@@ -1,5 +1,6 @@
 'use client'
 import { db } from "@/app/firebase";
+import { handlePlayerTest } from "@/app/quiz/host/[sessionId]/page";
 import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react"
 
@@ -12,8 +13,6 @@ import { useEffect, useState } from "react"
 // 2. 
 
 export default function PlayerInterface({ sessionId, data }) {
-    console.log(JSON.stringify(data, null, 2));
-    
     const [sessionData, setSessionData] = useState(data);
 
     useEffect(() => {
@@ -33,9 +32,10 @@ export default function PlayerInterface({ sessionId, data }) {
         <div className="block">
             <h2>JOIN CODE: {data.joinCode}</h2>
             {sessionData.players.map((player, index) => (
-                <div key={index}>
+                <div key={index} className="flex justify-between">
                     <h4>{player.name}</h4>
-                    {/* <span>{player.points}</span> */}
+                    <span>{player.points || 0}</span>
+                    <button className="bg-blue-200 rounded-lg px-2 py-2" onClick={() => handlePlayerTest(sessionId, player.id)}>Test Button</button>
                 </div>
             ))}
         </div>

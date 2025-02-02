@@ -1,4 +1,4 @@
-import { doc, getDoc, onSnapshot, setDoc, updateDoc } from "firebase/firestore"; 
+import { doc, getDoc, updateDoc } from "firebase/firestore"; 
 import { db } from "@/app/firebase";
 import PlayerInterface from "@/app/components/multiplayer/PlayerInterface";
 
@@ -14,10 +14,6 @@ async function getSessionPlayers(sessionId) {
 }
 
 async function handlePlayerJoin(sessionId, playerId, sessionData) {
-    console.log(playerId);
-    console.log(sessionData);
-    
-    
     // Check to see if player exists
     if (sessionData.players.find((player) => player.name == playerId))
         console.log("He's there");
