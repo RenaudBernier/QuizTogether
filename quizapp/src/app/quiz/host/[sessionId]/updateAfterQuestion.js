@@ -6,7 +6,7 @@ export default async function updateAfterQuestion(sessionId) {
     const data = await getSession(sessionId);
 
     for (let playerName in data.players) {
-        if (data.players[playerName].answer === data.questionBank[data.currentQuestion].answer) {
+        if (data.players[playerName].answer === data.questionBank[data.currentQIndex].answer) {
             data.players[playerName].score += 1;
         }
     }

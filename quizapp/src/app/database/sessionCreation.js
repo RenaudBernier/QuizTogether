@@ -16,7 +16,7 @@ export async function sessionCreation(questionArr, setStatus) {
         await setDoc(doc(db, "sessions", sessionId.toString()), {
             players: {},
             questionBank: questionArr,
-            currentQIndex: 0,
+            currentQIndex: -1,
         });
         console.log("Document written with ID: ", sessionId);
         sessionStorage.setItem("id", sessionId.toString());
