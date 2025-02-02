@@ -37,7 +37,7 @@ export default async function Page({
 
     const sessionData = await getSessionPlayers(sessionId);
     return (
-        <div>
+        <div className="pt-16 h-screen">
             <div className="block font-bold text-center text-white bg-red-600">HOST</div>
             <h1 className="block w-full">Host: {sessionData.host}</h1>
             {sessionId}

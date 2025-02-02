@@ -30,14 +30,24 @@ export default function PlayerInterface({ sessionId, data }) {
 
     return (
         <div className="block">
-            <h2>JOIN CODE: {data.joinCode}</h2>
-            {sessionData.players.map((player, index) => (
-                <div key={index} className="flex justify-between">
-                    <h4>{player.name}</h4>
-                    <span>{player.points || 0}</span>
-                    <button className="bg-blue-200 rounded-lg px-2 py-2" onClick={() => handlePlayerTest(sessionId, player.id)}>Test Button</button>
-                </div>
-            ))}
+            <h2>JOIN CODE: {sessionData.joinCode || "Loading..."}</h2>
+
+            {sessionData?.players?.length > 0 ? (
+                sessionData.players.map((player, index) => (
+                    <div key={index} className="flex justify-between">
+                        <h4>{player.name}</h4>
+                        <span>{player.points || 0}</span>
+                        <button 
+                            className="bg-blue-200 rounded-lg px-2 py-2" 
+                            onClick={() => handlePlayerTest(sessionId, player.id)}
+                        >
+                            Test Button
+                        </button>
+                    </div>
+                ))
+            ) : (
+                <p>No players joined yet.</p> // ✅ Handle empty or undefined players array
+            )}
         </div>
     )
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg z-50">
@@ -22,6 +22,7 @@ export default function Navbar() {
             <NavItem href="/" label="Home" />
             <NavItem href="/about" label="About" />
             <NavItem href="/quizzes" label="Quizzes" />
+            <NavItem href="/leaderboard" label="Leaderboard" />
             
             {/* Dropdown Menu */}
             {/* <div className="relative">
@@ -67,7 +68,6 @@ export default function Navbar() {
           <NavItem href="/about" label="About" />
           <NavItem href="/quizzes" label="Quizzes" />
           <NavItem href="/leaderboard" label="Leaderboard" />
-          <NavItem href="/settings" label="Settings" />
         </motion.div>
       )}
     </nav>
