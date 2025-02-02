@@ -49,11 +49,14 @@ export default async function Page({
     return (
         <div className="pt-16 h-screen">
             <div className="block font-bold text-center text-white bg-red-600">HOST</div>
-            <h1 className="block w-full">Host: {sessionData.host}</h1>
-            {sessionId}
-            <PlayerInterface sessionId={sessionId} data={sessionData} />
-            <ButtonComponent id={sessionId}/>
+            <h1 className="block w-full text-center text-4xl font-bold my-4">
+                Use this code to join: {sessionId}
+            </h1>
+            <div className="flex justify-center flex-col items-center">
+                <PlayerInterface sessionId={sessionId} data={sessionData} />
+                <ButtonComponent id={sessionId} />
+            </div>
             {/* Questions */}
         </div>
-    )
+    );
 }

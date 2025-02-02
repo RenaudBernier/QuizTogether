@@ -29,20 +29,12 @@ export default function PlayerInterface({ sessionId, data }) {
     }, [sessionId]);
     let i = 0;
     return (
-        <div className="block">
-            <h2>JOIN CODE: {sessionData.joinCode || "Loading..."}</h2>
-
+        <div className="block min-h-80">
+            <h2>Players: </h2>
             {sessionData?.players !== undefined ? (
                 Object.keys(sessionData.players).map((name) => (
                     <div key={i++} className="flex justify-between">
                         <h4>{name}</h4>
-                        <span>{sessionData.players[name].score || 0}</span>
-                        <button 
-                            className="bg-blue-200 rounded-lg px-2 py-2" 
-                            onClick={() => handlePlayerTest(sessionId, player.id)}
-                        >
-                            Test Button
-                        </button>
                     </div>
                 ))
             ) : (
