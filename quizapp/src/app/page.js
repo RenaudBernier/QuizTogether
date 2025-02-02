@@ -1,6 +1,7 @@
 "use client"
 import JoinQuiz from '../../components/JoinQuiz';
 import Welcome from '../../components/Welcome';
+import HeroBanner from './components/landing-page/HeroBanner';
 import FileDropzone from './dropzone component';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -21,11 +22,11 @@ export default function Home() {
   };
 
     return (
-        <main className="flex flex-col justify-center gap-[32px] items-center min-h-screen text-center pt-24 md:pt:16 mx-auto px-6">
+        <main className="flex flex-col justify-center gap-[32px] items-center min-h-screen text-center pt-16 md:pt:16 mx-auto ">
+          <HeroBanner />
           <Welcome />
-          <section className="flex flex-col md:flex-row gap-8">
+          <section className="flex flex-col md:flex-row gap-8 pb-12">
             <FileDropzone setStatus={setStatus} />
-            <JoinQuiz />
           </section>
 
           {/* Next Button: Only show if status is 1 */}
