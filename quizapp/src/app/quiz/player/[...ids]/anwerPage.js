@@ -35,13 +35,25 @@ export default function AnswerPage({ name, sessionId, sessionData }) {
     }, [sessionId]);
 
     if (questionNb === null) {
-        return <div>Loading...</div>;
+        return (
+            <div className="w-full h-8 text-[24px] font-bold text-white flex items-center justify-center bg-indigo-500 uppercase mb-4">
+            Loading...</div>
+        );
     }
     if (questionNb === -1) {
-        return <div>Please wait for the game to start</div>;
+        return (
+            <div className="w-full h-8 text-[24px] font-bold text-white flex items-center justify-center bg-indigo-500 uppercase mb-4">
+                Please wait for the game to start
+            </div>
+        );
     }
     if (isQuestionTime === 0) {
-        return <h1>Please wait for the host</h1>;
+        
+        return (
+            <div className="w-full h-8 text-[24px] font-bold text-white flex items-center justify-center bg-indigo-500 uppercase mb-4">
+                Please wait for the host
+            </div>
+        );
     }
 
     const handleAnswerClick = async (answerIndex) => {
