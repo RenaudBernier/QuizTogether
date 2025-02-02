@@ -5,6 +5,7 @@ import HeroBanner from './components/landing-page/HeroBanner';
 import FileDropzone from './dropzone component';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Loader from './components/landing-page/Loader';
 
 export default function Home() {
   const [status, setStatus] = useState(0);
@@ -27,17 +28,20 @@ export default function Home() {
           <Welcome />
           <section className="flex flex-col md:flex-row gap-8 pb-12">
             <FileDropzone setStatus={setStatus} />
-          </section>
-
           {/* Next Button: Only show if status is 1 */}
-          {status === 1 && (
-            <button
-              onClick={handleNext}
-              className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition"
-            >
-              Next
-            </button>
-          )}
+            {status === 1 ? (
+              <button
+                onClick={handleNext}
+                className="bg-indigo-500 text-white py-2 px-6 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Next
+              </button>
+            ) : (
+              <div className='fixed w-full h-full z-100'>
+                <Loader />
+              </div>
+            )}
+          </section>
         </main>
     );
   }
