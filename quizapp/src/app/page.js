@@ -5,9 +5,11 @@ import HeroBanner from './components/landing-page/HeroBanner';
 import FileDropzone from './dropzone component';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Loader from './components/landing-page/Loader';
 
 export default function Home() {
   const [status, setStatus] = useState(0);
+  const [loader, setLoader] = useState(false);
   const router = useRouter(); // Initialize Next.js Router
   
   const handleNext = () => {
@@ -26,18 +28,22 @@ export default function Home() {
           <HeroBanner />
           <Welcome />
           <section className="flex flex-col md:flex-row gap-8 pb-12">
-            <FileDropzone setStatus={setStatus} />
-          </section>
-
+            <FileDropzone setStatus={setStatus} setLoader={setLoader} />
           {/* Next Button: Only show if status is 1 */}
-          {status === 1 && (
-            <button
-              onClick={handleNext}
-              className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition"
-            >
-              Next
-            </button>
-          )}
+            {status === 1 ? (
+              <button
+                onClick={handleNext}
+                className="bg-indigo-500 text-white py-2 px-6 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Next
+              </button>
+            ) : loader ? (
+              <div className='fixed w-full h-full z-100'>
+                <Loader />
+              </div>
+            ) : <></>
+          }
+          </section>
         </main>
     );
   }
