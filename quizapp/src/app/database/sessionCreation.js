@@ -14,10 +14,9 @@ export async function sessionCreation(questionArr, setStatus) {
         const sessionId = Math.floor(Math.random()*10000);
         // Add a new document with a generated ID
         await setDoc(doc(db, "sessions", sessionId.toString()), {
-            players: [],
+            players: {},
             questionBank: questionArr,
-            currentQIndex: 0,
-            joinCode: Math.floor(Math.random()*10000),
+            currentQIndex: -1,
         });
         console.log("Document written with ID: ", sessionId);
         sessionStorage.setItem("id", sessionId.toString());
