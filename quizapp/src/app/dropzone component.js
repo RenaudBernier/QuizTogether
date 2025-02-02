@@ -5,6 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import * as pdfjsLib from 'pdfjs-dist';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs';
 import {useState} from "react";
+import {sessionCreation} from "@/app/database/sessionCreation";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.mjs';
 
@@ -14,7 +15,7 @@ export default function FileDropzone({ onFileUpload }) {
     console.log("in fc");
 
     if (!acceptedFiles[0]) {
-        console.error('No file uploaded');
+      console.error('No file uploaded');
       return;
     }
 
@@ -43,6 +44,7 @@ export default function FileDropzone({ onFileUpload }) {
         body: JSON.stringify({ text: fullText }),
       });
       const result = await response.json();
+      await sessionCreation(result);
       console.log('File uploaded:', result);
     } catch (error) {
       console.error('Upload failed:', error);
@@ -52,16 +54,16 @@ export default function FileDropzone({ onFileUpload }) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <div
-      {...getRootProps()}
-      className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center cursor-pointer hover:border-blue-500 transition"
-    >
-      <input {...getInputProps()} />
-      {isDragActive ? (
-        <p className="text-blue-500">Drop the files here...</p>
-      ) : (
-        <p>Drag & drop some files here, or click to select files</p>
-      )}
-    </div>
+      <div
+          {...getRootProps()}
+          className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center cursor-pointer hover:border-blue-500 transition"
+      >
+        <input {...getInputProps()} />
+        {isDragActive ? (
+            <p className="text-blue-500">Drop the files here...</p>
+        ) : (
+            <p>Drag & drop some files here, or click to select files</p>
+        )}
+      </div>
   );
 }
