@@ -6,6 +6,8 @@ import Options from "../../components/Options";
 import Explanation from "../Explanation";
 import { getSession } from "@/app/quiz/player/[...ids]/page";
 import { useParams} from "next/navigation";
+import {doc, updateDoc} from "firebase/firestore";
+import {db} from "@/app/firebase";
 // Other imports ...
 
 export default function Page() {
@@ -15,6 +17,17 @@ export default function Page() {
     const params = useParams();
     const ids = params?.ids;
     const id = ids ? ids[0] : null;
+
+    async function questionEnd(isQuestionTime){
+        await updateDoc(doc(db, "sessions", id), {
+            isQuestionTime: isQuestionTime,
+        });
+        if(isQuestionTime === 1){
+            setResultScreen(false);
+        }
+        else
+            setResultScreen(true);
+    }
 
     useEffect(() => {
         // This code runs only on the client.
@@ -39,7 +52,7 @@ export default function Page() {
     return !resultScreen ? (
         <div>
             <CardComponent prompt={currentQuestion.prompt} />
-            <TimerComponent setResultScreen={setResultScreen} />
+            <TimerComponent setResultScreen={questionEnd} />
             <Options
                 answers={[
                     { answer: answers[0] },
@@ -53,7 +66,7 @@ export default function Page() {
         <Explanation
             questionNb={questionNb}
             setQuestionNb={setQuestionNb}
-            setResultScreen={setResultScreen}
+            setResultScreen={questionEnd}
         />
     );
 }

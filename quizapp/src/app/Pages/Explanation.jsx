@@ -27,7 +27,7 @@ export default function Explanation({questionNb, setQuestionNb, setResultScreen}
 
   const handleClick = () => {
     setQuestionNb(questionNb+1);
-    setResultScreen(false);
+    setResultScreen(1);
   }
 
   if(!data || !data.players) return <div>Loading...</div>;
