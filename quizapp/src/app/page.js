@@ -9,6 +9,7 @@ import Loader from './components/landing-page/Loader';
 
 export default function Home() {
   const [status, setStatus] = useState(0);
+  const [loader, setLoader] = useState(false);
   const router = useRouter(); // Initialize Next.js Router
   
   const handleNext = () => {
@@ -27,7 +28,7 @@ export default function Home() {
           <HeroBanner />
           <Welcome />
           <section className="flex flex-col md:flex-row gap-8 pb-12">
-            <FileDropzone setStatus={setStatus} />
+            <FileDropzone setStatus={setStatus} setLoader={setLoader} />
           {/* Next Button: Only show if status is 1 */}
             {status === 1 ? (
               <button
@@ -36,11 +37,12 @@ export default function Home() {
               >
                 Next
               </button>
-            ) : (
+            ) : loader ? (
               <div className='fixed w-full h-full z-100'>
                 <Loader />
               </div>
-            )}
+            ) : <></>
+          }
           </section>
         </main>
     );
