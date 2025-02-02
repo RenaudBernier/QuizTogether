@@ -1,4 +1,4 @@
-import { addDoc, collection } from "firebase/firestore";
+import {setDoc, collection, doc} from "firebase/firestore";
 import { db } from "@/app/firebase"; // Ensure correct import path
 
 export async function sessionCreation(questionArr, setStatus) {
@@ -11,15 +11,16 @@ export async function sessionCreation(questionArr, setStatus) {
         // Reference Firestore collection correctly
         const sessionsRef = collection(db, "sessions");
 
+        const sessionId = Math.floor(Math.random()*10000);
         // Add a new document with a generated ID
-        const docRef = await addDoc(sessionsRef, {
+        await setDoc(doc(db, "sessions", sessionId.toString()), {
             players: [],
             questionBank: questionArr,
             currentQIndex: 0,
             joinCode: Math.floor(Math.random()*10000),
         });
-        console.log("Document written with ID: ", docRef.id);
-        sessionStorage.setItem("id", docRef.id);
+        console.log("Document written with ID: ", sessionId);
+        sessionStorage.setItem("id", sessionId.toString());
         console.log("Session ID stored in sessionStorage");
 
         setStatus(1); //Flag to indicate session creation success
