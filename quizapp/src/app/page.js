@@ -25,9 +25,8 @@ export default function Home() {
         <main className="flex flex-col justify-center gap-[32px] items-center min-h-screen text-center pt-16 md:pt:16 mx-auto ">
           <HeroBanner />
           <Welcome />
-          <section className="flex flex-col md:flex-row gap-8">
+          <section className="flex flex-col md:flex-row gap-8 pb-12">
             <FileDropzone setStatus={setStatus} />
-            <JoinQuiz />
           </section>
 
           {/* Next Button: Only show if status is 1 */}

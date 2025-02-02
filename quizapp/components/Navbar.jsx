@@ -24,8 +24,6 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-6">
             <NavItem href="/" label="Home" />
             <NavItem href="/about" label="About" />
-            <NavItem href="/quizzes" label="Quizzes" />
-            <NavItem href="/leaderboard" label="Leaderboard" />
             
             {/* Dropdown Menu */}
             {/* <div className="relative">
@@ -69,8 +67,6 @@ export default function Navbar() {
         >
           <NavItem href="/" label="Home" />
           <NavItem href="/about" label="About" />
-          <NavItem href="/quizzes" label="Quizzes" />
-          <NavItem href="/leaderboard" label="Leaderboard" />
         </motion.div>
       )}
     </nav>
