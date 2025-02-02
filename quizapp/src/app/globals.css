@@ -1,11 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
+/* 
+ :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+} 
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -23,3 +23,4 @@ body {
 .test {
   @apply bg-slate-200 border-red-600 border;
 }
+*/
