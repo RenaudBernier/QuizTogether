@@ -3,7 +3,7 @@ import { db } from "@/app/firebase";
 import PlayerInterface from "@/app/components/multiplayer/PlayerInterface";
 import AnswerPage from "@/app/quiz/player/[...ids]/anwerPage";
 
-async function getSession(sessionId) {
+export async function getSession(sessionId) {
     let data = {};
 
     const querySnapshot = await getDoc(doc(db, "sessions", sessionId));

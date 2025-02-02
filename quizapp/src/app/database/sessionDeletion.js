@@ -11,6 +11,6 @@ export async function deleteSession(sessionId) {
     } finally {
         // Delete session stored in local/sessionStorage
         // regardless of what happens
-        sessionStorage.removeItem("quiz-session-id"); 
+        sessionStorage.removeItem("id");
     }
 }
