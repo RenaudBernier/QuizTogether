@@ -7,14 +7,14 @@ import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const [status, setStatus] = useState(0);
-  const router = useRouter(); // ✅ Initialize Next.js Router
+  const router = useRouter(); // Initialize Next.js Router
   
   const handleNext = () => {
     console.log("Next button clicked!");
     const id = sessionStorage.getItem("id");
 
     if (id) {
-      router.push(`/quiz/host/${id}`); // ✅ Navigate without refresh
+      router.push(`/quiz/host/${id}`); // Navigate without refresh
     } else {
       console.error("No session ID found in sessionStorage.");
     }

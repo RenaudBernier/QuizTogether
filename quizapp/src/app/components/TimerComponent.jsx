@@ -5,7 +5,7 @@ import { useTimer } from 'react-timer-hook';
 function MyTimer({ expiryTimestamp, setResultScreen }) {
   const {
     seconds,
-  } = useTimer({ expiryTimestamp, onExpire: () => setResultScreen(true) });
+  } = useTimer({ expiryTimestamp, onExpire: () => setResultScreen(0) });
 
 
   return (
@@ -20,7 +20,7 @@ function MyTimer({ expiryTimestamp, setResultScreen }) {
 
 export default function TimerComponent({ setResultScreen }) {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 3); // 10 minutes timer
+  time.setSeconds(time.getSeconds() + 10); // 10 minutes timer
   return (
     <div>
       <MyTimer expiryTimestamp={time} setResultScreen={setResultScreen} />

@@ -1,6 +1,9 @@
-import { doc, getDoc, updateDoc } from "firebase/firestore"; 
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import PlayerInterface from "@/app/components/multiplayer/PlayerInterface";
+import {redirect} from "next/navigation";
+import {Button} from "@/app/ui";
+import ButtonComponent from "@/app/quiz/host/[sessionId]/buttonComponent";
 
 async function getSessionPlayers(sessionId) {
     const querySnapshot = await getDoc(doc(db, "sessions", "a1234567890"));
@@ -35,6 +38,13 @@ export default async function Page({
     // Fetch session id from firebase
     const sessionId = (await params).sessionId;
 
+    async function incrementQuestionNb() {
+        await updateDoc(doc(db, "sessions", id), {
+            currentQIndex: 0,
+        });
+        redirect(`/Pages/${id}`);
+    }
+
     const sessionData = await getSessionPlayers(sessionId);
     return (
         <div className="pt-16 h-screen">
@@ -42,6 +52,7 @@ export default async function Page({
             <h1 className="block w-full">Host: {sessionData.host}</h1>
             {sessionId}
             <PlayerInterface sessionId={sessionId} data={sessionData} />
+            <ButtonComponent id={sessionId}/>
             {/* Questions */}
         </div>
     )

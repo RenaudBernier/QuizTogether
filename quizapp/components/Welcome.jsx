@@ -6,10 +6,10 @@ const Welcome = () => {
   return (
     <section className="flex flex-col">
         <h1 className="text-4xl font-bold text-black dark:text-white">
-            Welcome to QuizMaster 🚀
+            Welcome to QuizIt 🚀
         </h1>
         <p className="text-lg text-neutral-500 dark:text-neutral-400 mb-6 py-3">
-            The ultimate quiz app for developers
+            Quiz your notes, quiz your friends. QuizIt is the best way to create and play quizzes online.
         </p>
         {/* <div className="flex justify-center space-x-4">
             <Link href="/login" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">

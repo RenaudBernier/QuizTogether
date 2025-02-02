@@ -5,7 +5,15 @@ function comparePlayers(a, b) {
 }
 
 function sortPlayers(players) {
-    const playerArr = Object.values(players);
+    const playerArr = [];
+
+    for (let key in players) {
+        playerArr.push({
+            name: key,
+            score: players[key].score
+        });
+    }
+
 
     playerArr.sort(comparePlayers);
 
