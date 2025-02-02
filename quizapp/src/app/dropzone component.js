@@ -9,7 +9,7 @@ import {sessionCreation} from "@/app/database/sessionCreation";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.mjs';
 
-export default function FileDropzone({ onFileUpload }) {
+export default function FileDropzone({ onFileUpload, setStatus }) {
 
   const onDrop = useCallback(async (acceptedFiles) => {
     console.log("in fc");
@@ -44,7 +44,7 @@ export default function FileDropzone({ onFileUpload }) {
         body: JSON.stringify({ text: fullText }),
       });
       const result = await response.json();
-      await sessionCreation(result);
+      await sessionCreation(result, setStatus);
       console.log('File uploaded:', result);
     } catch (error) {
       console.error('Upload failed:', error);
