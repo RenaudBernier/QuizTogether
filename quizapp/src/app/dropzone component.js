@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 import * as pdfjsLib from 'pdfjs-dist';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs';
 import {useState} from "react";
-import {sessionCreation} from "@/app/database/sessionCreation";
+// import {sessionCreation} from "@/app/database/sessionCreation";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.mjs';
 
@@ -54,16 +54,21 @@ export default function FileDropzone({ onFileUpload }) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-      <div
-          {...getRootProps()}
-          className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center cursor-pointer hover:border-blue-500 transition"
-      >
-        <input {...getInputProps()} />
-        {isDragActive ? (
-            <p className="text-blue-500">Drop the files here...</p>
-        ) : (
-            <p>Drag & drop some files here, or click to select files</p>
-        )}
-      </div>
+      <section className="flex gap-4">
+        <div
+            {...getRootProps()}
+            className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center cursor-pointer hover:border-blue-500 transition"
+        >
+          <input {...getInputProps()} />
+          {isDragActive ? (
+              <p className="text-blue-500">Drop the files here...</p>
+          ) : (
+              <p>Drag & drop some files here, or click to select files</p>
+          )}
+        </div>
+        <div>
+
+        </div>
+      </section>
   );
 }
