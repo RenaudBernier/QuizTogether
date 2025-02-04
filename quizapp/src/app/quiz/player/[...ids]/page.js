@@ -47,16 +47,13 @@ export default async function Page({
     await handlePlayerJoin(...ids, sessionData);
 
     return (
-        <div className="w-full h-screen pt-24">
-            <div className="w-full h-20 text-[48px] font-bold text-white flex items-center justify-center bg-indigo-500 uppercase">
+        <div className="w-full min-h-screen pt-24">
+            <div className="g-0 m-0 w-full h-20 text-[48px] font-bold text-white flex items-center justify-center bg-indigo-500 uppercase">
             {ids[1]}
             </div>
             {/* <div className="w-full h-8 text-[24px] font-bold text-white flex items-center justify-center bg-emerald-500 uppercase mb-4">
                 Waiting for next question...
             </div> */}
-            {sessionData.questionBank[0]?.prompt && (
-                <h1 className="w-full h-20 text-[24px] font-bold text-white flex items-center justify-center bg-emerald-400 uppercase">Host: {sessionData.questionBank[0]?.prompt}</h1>
-            )}
             <AnswerPage name={name} sessionId={sessionID} sessionData={sessionData}/>
             {/*<PlayerInterface sessionId={ids[0]} data={sessionData} />*/}
         </div>

@@ -8,7 +8,12 @@ import { getSession } from "@/app/quiz/player/[...ids]/page";
 import { useParams} from "next/navigation";
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "@/app/firebase";
+let timePerQuestion = Number(sessionStorage.getItem("timePerQuestion"));
+if (!timePerQuestion)
+    timePerQuestion = 20;
 // Other imports ...
+
+console.log("Time per question is now:", timePerQuestion);
 
 export default function Page() {
     const [data, setData] = useState(null);
@@ -52,7 +57,7 @@ export default function Page() {
     return !resultScreen ? (
         <div>
             <CardComponent prompt={currentQuestion.prompt} />
-            <TimerComponent setResultScreen={questionEnd} />
+            <TimerComponent setResultScreen={questionEnd} timePerQuestion={timePerQuestion} />
             <Options
                 answers={[
                     { answer: answers[0] },

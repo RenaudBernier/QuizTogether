@@ -65,8 +65,8 @@ export default function AnswerPage({ name, sessionId, sessionData }) {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4">
-            <h1 className="text-4xl font-bold mb-8 text-center">{prompt}</h1>
+        <div className="flex flex-col items-center justify-center p-4">
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
                 {answers.map((answer, index) => (
                     <button

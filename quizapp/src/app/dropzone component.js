@@ -55,7 +55,7 @@ export default function FileDropzone({ setStatus, setLoader }) {
       {isDragActive ? (
         <p className="text-blue-500">Drop the files here...</p>
       ) : (
-        <p>Drag & drop some files here, or click to select files</p>
+        <p>Drag & drop a PDF file here, or click to select file</p>
       )}
     </div>
   );
