@@ -47,7 +47,7 @@ export default async function Page({
     await handlePlayerJoin(...ids, sessionData);
 
     return (
-        <div className="w-full h-screen pt-24">
+        <div className="w-full pt-24">
             <div className="w-full h-20 text-[48px] font-bold text-white flex items-center justify-center bg-indigo-500 uppercase">
             {ids[1]}
             </div>
