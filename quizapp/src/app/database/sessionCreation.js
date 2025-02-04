@@ -17,7 +17,9 @@ export async function sessionCreation(questionArr, setStatus) {
             players: {},
             questionBank: questionArr,
             currentQIndex: -1,
-            isQuestionTime: 1
+            isQuestionTime: 1,
+            playerCount: 0,
+            nbOfAnswers: 0
         });
         console.log("Document written with ID: ", sessionId);
         sessionStorage.setItem("id", sessionId.toString());

@@ -6,8 +6,9 @@ import Options from "../../components/Options";
 import Explanation from "../Explanation";
 import { getSession } from "@/app/quiz/player/[...ids]/page";
 import { useParams} from "next/navigation";
-import {doc, updateDoc} from "firebase/firestore";
+import {doc, onSnapshot, updateDoc} from "firebase/firestore";
 import {db} from "@/app/firebase";
+import endRoundEarly from "@/app/Pages/endRoundEarly";
 let timePerQuestion = Number(sessionStorage.getItem("timePerQuestion"));
 if (!timePerQuestion)
     timePerQuestion = 20;
@@ -35,16 +36,20 @@ export default function Page() {
     }
 
     useEffect(() => {
+
+        const sessionRef = doc(db, "sessions", id);
         // This code runs only on the client.
         // Make sure to handle the case when `id` is null.
-        getSession(id)
-            .then((fetchedData) => {
-                setData(fetchedData);
-            })
-            .catch((err) => {
-                console.error("Error fetching session:", err);
-            });
+        const unsubscribe = onSnapshot(sessionRef, (docSnap) => {
+            if (docSnap.exists()) {
+                setData(docSnap.data());
+            }
+        });
     }, []);
+
+    if(data)
+        endRoundEarly(data, questionEnd);
+
 
     // While the data is loading, you can display a loading indicator.
     if (!data) {

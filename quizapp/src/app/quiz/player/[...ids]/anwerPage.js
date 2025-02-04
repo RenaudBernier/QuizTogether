@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import {doc, increment, onSnapshot, updateDoc} from "firebase/firestore";
 import { db } from "@/app/firebase";
 import React from "react";
 
@@ -61,6 +61,7 @@ export default function AnswerPage({ name, sessionId, sessionData }) {
         setSelectedAnswer(answerIndex);
         await updateDoc(doc(db, "sessions", sessionId), {
             [`players.${name}.answer`]: answerIndex,
+            [`numberOfAnswers`]: increment(1),
         });
     };
 

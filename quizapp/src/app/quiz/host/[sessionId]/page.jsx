@@ -6,7 +6,7 @@ import {Button} from "@/app/ui";
 import ButtonComponent from "@/app/quiz/host/[sessionId]/buttonComponent";
 
 async function getSessionPlayers(sessionId) {
-    const querySnapshot = await getDoc(doc(db, "sessions", "a1234567890"));
+    const querySnapshot = await getDoc(doc(db, "sessions", sessionId));
 
     if (querySnapshot.exists())
         return querySnapshot.data();

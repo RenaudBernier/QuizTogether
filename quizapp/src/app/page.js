@@ -3,18 +3,20 @@ import JoinQuiz from '../../components/JoinQuiz';
 import Welcome from '../../components/Welcome';
 import HeroBanner from './components/landing-page/HeroBanner';
 import FileDropzone from './dropzone component';
-import {useRef, useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import Loader from './components/landing-page/Loader';
 import { Input } from '@mui/material';
-
-sessionStorage.clear();
 
 export default function Home() {
   const [status, setStatus] = useState(0);
   const [loader, setLoader] = useState(false);
   const timePerQuestion = useRef(null);
   const router = useRouter(); // Initialize Next.js Router
+
+    useEffect(() => {
+        sessionStorage.clear();
+    }, []);
   
   const handleNext = () => {
     console.log("Next button clicked!");

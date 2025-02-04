@@ -1,4 +1,4 @@
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import PlayerInterface from "@/app/components/multiplayer/PlayerInterface";
 import AnswerPage from "@/app/quiz/player/[...ids]/anwerPage";
@@ -27,6 +27,7 @@ async function handlePlayerJoin(sessionId, playerName, sessionData) {
                 answer: 0,
                 score: 0,
             },
+            [`playerCount`]: increment(1),
         });
         }
     
