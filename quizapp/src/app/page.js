@@ -7,6 +7,7 @@ import {useRef, useState, useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import Loader from './components/landing-page/Loader';
 import { Input } from '@mui/material';
+import startTestQuiz from "@/app/debugging/startTestQuiz";
 
 export default function Home() {
   const [status, setStatus] = useState(0);
@@ -45,6 +46,8 @@ export default function Home() {
                              inputRef={timePerQuestion}
                              type={"number"}></Input>
                   <p>seconds</p>
+
+                  <button onClick={() => startTestQuiz(setStatus)}>TEST</button>
 
               </div>
 

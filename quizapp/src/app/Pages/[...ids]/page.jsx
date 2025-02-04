@@ -23,29 +23,35 @@ export default function Page() {
     const params = useParams();
     const ids = params?.ids;
     const id = ids ? ids[0] : null;
+    const sessionRef = doc(db, "sessions", id);
 
     async function questionEnd(isQuestionTime){
+
         await updateDoc(doc(db, "sessions", id), {
             isQuestionTime: isQuestionTime,
         });
         if(isQuestionTime === 1){
             setResultScreen(false);
         }
-        else
+        else {
             setResultScreen(true);
+            await updateDoc(sessionRef, {
+                numberOfAnswers: 0,
+            })
+        }
     }
 
     useEffect(() => {
 
-        const sessionRef = doc(db, "sessions", id);
         // This code runs only on the client.
         // Make sure to handle the case when `id` is null.
         const unsubscribe = onSnapshot(sessionRef, (docSnap) => {
             if (docSnap.exists()) {
                 setData(docSnap.data());
+                console.log("Current data updated", docSnap.data().numberOfAnswers);
             }
         });
-    }, []);
+    }, [id]);
 
     if(data)
         endRoundEarly(data, questionEnd);
