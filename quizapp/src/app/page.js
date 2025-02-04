@@ -3,18 +3,22 @@ import JoinQuiz from '../../components/JoinQuiz';
 import Welcome from '../../components/Welcome';
 import HeroBanner from './components/landing-page/HeroBanner';
 import FileDropzone from './dropzone component';
-import { useState } from 'react';
+import {useRef, useState} from 'react';
 import { useRouter } from 'next/navigation';
 import Loader from './components/landing-page/Loader';
+import { Input } from '@mui/material';
 
 export default function Home() {
   const [status, setStatus] = useState(0);
   const [loader, setLoader] = useState(false);
+  const timePerQuestion = useRef(null);
   const router = useRouter(); // Initialize Next.js Router
   
   const handleNext = () => {
     console.log("Next button clicked!");
     const id = sessionStorage.getItem("id");
+    sessionStorage.setItem("timePerQuestion", timePerQuestion.current.value);
+    console.log("Time per question set to:", timePerQuestion.current.value);
 
     if (id) {
       router.push(`/quiz/host/${id}`); // Navigate without refresh
@@ -27,8 +31,19 @@ export default function Home() {
         <main className="flex flex-col justify-center gap-[32px] items-center min-h-screen text-center pt-16 md:pt:16 mx-auto ">
           <HeroBanner />
           <Welcome />
-          <section className="flex flex-col md:flex-row gap-8 pb-12">
+          <section className="flex flex-col gap-8 pb-12 items-center">
             <FileDropzone setStatus={setStatus} setLoader={setLoader} />
+              <div className="flex items-center" >
+                  <p>Time per question:</p>
+                      <Input inputProps={{
+                  className: 'text-center bg-gray-100 w-12 rounded-md',
+              }}
+                             inputRef={timePerQuestion}
+                             type={"number"}></Input>
+                  <p>seconds</p>
+
+              </div>
+
           {/* Next Button: Only show if status is 1 */}
             {status === 1 ? (
               <button
