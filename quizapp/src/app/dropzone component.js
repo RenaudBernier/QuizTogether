@@ -8,7 +8,7 @@ import { sessionCreation } from "@/app/database/sessionCreation";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.mjs';
 
-export default function FileDropzone({ setStatus }) {
+export default function FileDropzone({ setStatus, setLoader }) {
   const onDrop = useCallback(async (acceptedFiles) => {
     if (!acceptedFiles[0]) {
       console.error('No file uploaded');
@@ -27,6 +27,7 @@ export default function FileDropzone({ setStatus }) {
     }
 
     try {
+      setLoader(true);
       const response = await fetch('/api/openai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -38,6 +39,8 @@ export default function FileDropzone({ setStatus }) {
       console.log('File uploaded:', result);
     } catch (error) {
       console.error('Upload failed:', error);
+    } finally {
+      setLoader(false);
     }
   }, []);
 
