@@ -30,10 +30,10 @@ export default function PlayerInterface({ sessionId, data }) {
     let i = 0;
     return (
         <div className="block min-h-80">
-            <h2>Players: </h2>
+            <h2 className="uppercase font-bold text-lg">Players: </h2>
             {sessionData?.players !== undefined ? (
                 Object.keys(sessionData.players).map((name) => (
-                    <div key={i++} className="flex justify-between">
+                    <div key={i++} className="flex justify-between uppercase">
                         <h4>{name}</h4>
                     </div>
                 ))
