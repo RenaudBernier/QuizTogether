@@ -47,14 +47,15 @@ export default async function Page({
 
     const sessionData = await getSessionPlayers(sessionId);
     return (
-        <div className="pt-16 h-screen">
-            <div className="block font-bold text-center text-white bg-red-600">HOST</div>
-            <h1 className="block w-full text-center text-4xl font-bold my-4">
+        <div className="pt-24 h-screen">
+            {/* <div className="block font-bold text-center text-white bg-red-600">HOST</div> */}
+            <div className="w-full h-20 text-[48px] font-bold text-white flex items-center justify-center bg-emerald-500 uppercase mb-4">code: {sessionId}</div>
+            {/* <h1 className="block w-full text-center text-4xl font-bold my-4">
                 Use this code to join: {sessionId}
-            </h1>
+            </h1> */}
             <div className="flex justify-center flex-col items-center">
-                <PlayerInterface sessionId={sessionId} data={sessionData} />
                 <ButtonComponent id={sessionId} />
+                <PlayerInterface sessionId={sessionId} data={sessionData} />
             </div>
             {/* Questions */}
         </div>
