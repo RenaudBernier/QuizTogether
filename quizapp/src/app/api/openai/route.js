@@ -38,7 +38,12 @@ export async function POST(request) {
       messages: [
         {
           role: "system",
-          content: `Generate at least 20 multiple-choice questions from the text that was generated from the PDF file. There should be 4 choices for each question, placed in a random order, only one of them is correct. In the returned array, the correct answer should be indicated by the index of the correct answer using the goodAnswer field.`,
+          content: `You will be sent a text transcript of a PDF containing course notes by a student.
+           Generate at least 20 multiple-choice questions from the text that was generated from the PDF file.
+           They should be the questions that you think could appear on the student's exam.
+            There should be 4 choices for each question, placed in a random order, only one of them is correct.
+             In the returned array, the correct answer should be indicated by the index of the correct answer using
+             the goodAnswer field.`,
         },
         { role: "user", content: pdfText.text },
       ],
