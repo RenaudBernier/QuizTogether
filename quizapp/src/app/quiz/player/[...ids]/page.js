@@ -54,9 +54,6 @@ export default async function Page({
             {/* <div className="w-full h-8 text-[24px] font-bold text-white flex items-center justify-center bg-emerald-500 uppercase mb-4">
                 Waiting for next question...
             </div> */}
-            {sessionData.questionBank[0]?.prompt && (
-                <h1 className="w-full h-20 text-[24px] font-bold text-white flex items-center justify-center bg-emerald-400 uppercase">Host: {sessionData.questionBank[0]?.prompt}</h1>
-            )}
             <AnswerPage name={name} sessionId={sessionID} sessionData={sessionData}/>
             {/*<PlayerInterface sessionId={ids[0]} data={sessionData} />*/}
         </div>

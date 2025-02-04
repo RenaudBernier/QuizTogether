@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import Loader from './components/landing-page/Loader';
 import { Input } from '@mui/material';
 
+sessionStorage.clear();
+
 export default function Home() {
   const [status, setStatus] = useState(0);
   const [loader, setLoader] = useState(false);
