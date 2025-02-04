@@ -10,17 +10,17 @@ export default function About() {
       <h1 className="text-4xl font-bold text-gray-900 text-center">🚀 The Ultimate Quiz Experience</h1>
       
       <p className="text-lg text-gray-600 text-center mt-4 max-w-3xl">
-        Welcome to <span className="font-semibold text-blue-600">Quizmaster</span>, the interactive quiz platform designed 
+        Welcome to <span className="font-semibold text-blue-600">QuizIt</span>, the interactive quiz platform designed 
         to make learning and engagement more fun, dynamic, and competitive! Whether you're a teacher looking to boost 
         classroom participation, a corporate trainer aiming for effective learning, or a quiz enthusiast hosting 
-        game nights—Quizmaster is built for you.
+        game nights—QuizIt is built for you.
       </p>
 
       {/* 🎯 Mission */}
       <section className="mt-8 max-w-3xl text-center">
         <h2 className="text-2xl font-semibold text-gray-800">🎯 Our Mission</h2>
         <p className="text-gray-700 mt-2">
-          At Quizmaster, we believe that learning should be engaging, accessible, and rewarding. Our platform empowers 
+          At QuizIt, we believe that learning should be engaging, accessible, and rewarding. Our platform empowers 
           educators, students, and professionals by offering a seamless way to create, host, and participate in quizzes—anytime, anywhere.
         </p>
       </section>
@@ -37,9 +37,9 @@ export default function About() {
         </ul>
       </section>
 
-      {/* 🌎 Who Can Use Quizmaster? */}
+      {/* 🌎 Who Can Use QuizIt? */}
       <section className="mt-8 max-w-3xl text-center">
-        <h2 className="text-2xl font-semibold text-gray-800">🌎 Who Can Use Quizmaster?</h2>
+        <h2 className="text-2xl font-semibold text-gray-800">🌎 Who Can Use QuizIt?</h2>
         <p className="text-gray-700 mt-2">
           <b>Teachers & Educators:</b> Make lessons fun and interactive. <br />
           <b>Students & Learners:</b> Study smarter, test knowledge, and challenge friends. <br />
