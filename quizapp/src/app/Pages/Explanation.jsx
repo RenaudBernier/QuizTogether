@@ -25,9 +25,9 @@ export default function Explanation({questionNb, setQuestionNb, setResultScreen}
   }, []); // Empty dependency array runs it **only on mount**
 
 
-  const handleClick = () => {
+  const handleClick = async() => {
+    await setResultScreen(1);
     setQuestionNb(questionNb+1);
-    setResultScreen(1);
   }
 
   if(!data || !data.players) return <div>Loading...</div>;

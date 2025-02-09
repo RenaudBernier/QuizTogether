@@ -62,19 +62,22 @@ export async function POST(request) {
       ],
     });
 
+    // Extract the message from the response
+    const strMessage = textObject.choices[0].message.content;
+
     const completion = await openai.beta.chat.completions.parse({
       model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content: `You will be sent a string representing a JSON object. Return it as a JSON object, with the 
+          content: `You will be sent a string representing a JSON object. Return it as a JSON object, with the
           provided response format.`,
         },
-        { role: "user", content: textObject.choices[0].message.content },
+        { role: "user", content: strMessage },
       ],
       response_format: zodResponseFormat(format, "question_bank"),
     });
-
+    
     const questions = completion.choices[0].message.parsed.questions;
     console.log(questions);
 
